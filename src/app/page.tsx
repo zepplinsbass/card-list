@@ -55,7 +55,7 @@ export default function Home() {
   }
 
   return (
-    <div style={{ padding: 124 }}>
+    <div style={{ padding: 24 }}>
       <div className="mb-12">
         <label className="block text-gray-700 text-sm font-bold mb-2">
           Manabox Card List
