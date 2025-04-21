@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { ManaboxRow } from '../types/Manabox'
-import { TrimmedTcgPlayerRow } from '../types/TcgPlayer'
+import { ExternalTcgPlayerRow } from '../types/TcgPlayer'
 
 interface ManaboxRowWithTCGplayerID extends ManaboxRow {
   tcgplayer_id: string
@@ -9,21 +9,20 @@ interface ManaboxRowWithTCGplayerID extends ManaboxRow {
 
 export const useCSV = () => {
   const [manaboxCSV, setManaboxCSV] = useState<ManaboxRow[]>([])
-  const [tcgplayerCSV, setTcgplayerCSV] = useState<TrimmedTcgPlayerRow[]>([])
+  const [tcgplayerCSV, setTcgplayerCSV] = useState<Partial<ExternalTcgPlayerRow>[]>([])
 
   const saveManaboxCSV = (data: ManaboxRow[]) => {
     setManaboxCSV(data)
   }
 
-  const saveTcgplayerCSV = (data: TrimmedTcgPlayerRow[]) => {
+  const saveTcgplayerCSV = (data: Partial<ExternalTcgPlayerRow>[]) => {
     setTcgplayerCSV(data)
   }
 
-  const convertCSV = (rows: ManaboxRowWithTCGplayerID[]): TrimmedTcgPlayerRow[] => {
+  const convertCSV = (rows: ManaboxRowWithTCGplayerID[]): Pick<ExternalTcgPlayerRow, 'Product ID' | 'Quantity'>[] => {
     return rows.map(row => ({
-      "TCGplayer Id": row.tcgplayer_id,
-      "Add to Quantity": row.Quantity,
-      "TCG Marketplace Price": row['Purchase price'],
+      "Product ID": row.tcgplayer_id,
+      "Quantity": row.Quantity,
     }))
   }
 

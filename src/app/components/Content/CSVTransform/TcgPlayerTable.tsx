@@ -2,26 +2,19 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 
-import { TrimmedTcgPlayerRow } from '@/app/types/TcgPlayer';
-import { useCSV } from '@/app/hooks/useCSV';
+import { ExternalTcgPlayerRow, TcgPlayerColumns } from '@/app/types/TcgPlayer';
 
 type TableProps = {
-  data: TrimmedTcgPlayerRow[]
+  data: Partial<ExternalTcgPlayerRow>[]
 }
 
 export function TcgPlayerTable({ data }: TableProps) {
-  const { tcgplayerCSV } = useCSV()
-
-  const columns = ["TCGplayer Id", "Add to Quantity", "TCG Marketplace Price"]
-  const getRows = () => {
-    return tcgplayerCSV.length > 0 ? tcgplayerCSV : data
-  }
   const formattedData = {
-    rows: getRows().map((row, index) => ({
+    rows: data.map((row, index) => ({
       ...row,
       id: index,
     })),
-    columns: columns.map(column => ({
+    columns: TcgPlayerColumns.map(column => ({
       field: column,
       headerName: column,
       hide: false,

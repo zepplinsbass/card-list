@@ -36,7 +36,25 @@ export interface TcgPlayerRow {
   "TCG Marketplace Price": number;
   "Photo URL": string;
 }
-export type TrimmedTcgPlayerRow = Pick<
-  TcgPlayerRow,
-  "TCGplayer Id" | "Add to Quantity" | "TCG Marketplace Price"
->;
+
+export const ExternalTcgPlayerColumns = [
+  "Product ID",
+  "Quantity",
+  "Set",
+  "Set Code",
+  "Name",
+  "Printing",
+  "Condition",
+  "Language",
+] as const;
+export type ExternalTcgPlayerColumn = (typeof ExternalTcgPlayerColumns)[number];
+export interface ExternalTcgPlayerRow {
+  "Product ID": string;
+  Quantity: number;
+  Set: string;
+  "Set Code": string;
+  Name: string;
+  Printing: string;
+  Condition: "Near Mint";
+  Language: "English" | "Japanese";
+}
