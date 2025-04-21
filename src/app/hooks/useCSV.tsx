@@ -27,11 +27,14 @@ export const useCSV = () => {
     }))
   }
 
+  const removeManaboxCSV = () => setManaboxCSV([])
+
   return {
     manaboxCSV,
     tcgplayerCSV,
     saveManaboxCSV,
     saveTcgplayerCSV,
+    removeManaboxCSV,
     convertCSV,
   }
 }

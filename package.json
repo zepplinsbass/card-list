@@ -9,13 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.0.2",
+    "@mui/x-data-grid": "^8.0.0",
     "@netlify/plugin-nextjs": "^5.9.4",
     "axios": "^1.8.4",
-    "csv-import-react": "^1.0.14",
     "next": "15.1.7",
     "react": "^19.0.0",
-    "react-csv": "^2.2.2",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-papaparse": "^4.4.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

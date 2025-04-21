@@ -1,9 +1,9 @@
-import { useTextTransform } from "../hooks/useTextTransform"
+import { useTextTransform } from "../../hooks/useTextTransform"
 
 export default function TextTransform() {
   const { handleManaboxChange, resetTcgplayerList, transformManaboxText, tcgplayerList } = useTextTransform()
   return (
-    <div style={{ padding: 24 }}>
+    <div style={{ padding: 24, width: '100%' }}>
       <div className="mb-12">
         <label className="block text-gray-700 text-sm font-bold mb-2">
           Manabox Card List

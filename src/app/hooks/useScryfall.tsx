@@ -12,6 +12,7 @@ const sleep = async (ms: number) =>
 
 export const useScryfall = () => {
   const getTcgPlayerIdForCard = async (scryfallId: string): Promise<string | null> => {
+    console.log(scryfallId, 'scryfall id')
     const response = await axios.get<ScryfallResponse>(`${baseUrl}${scryfallId}`)
     if (!response.data) {
       console.error('Could not get response from Scryfall')
