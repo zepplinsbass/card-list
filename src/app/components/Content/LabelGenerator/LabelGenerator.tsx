@@ -16,12 +16,13 @@ export function LabelGenerator() {
   const [currentTab, setCurrentTab] = useState<0 | 1>(0)
   const [shippingCSV, setShippingCSV] = useState<ShippingInfoRow[]>([])
 
+  const handleChangeTab = () => setCurrentTab(0)
   const onUpload = (csv: ShippingInfoRow[]) => setShippingCSV(csv)
 
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={currentTab} onChange={() => null} aria-label="basic tabs example">
+        <Tabs value={currentTab} onChange={handleChangeTab} aria-label="basic tabs example">
           <Tab label="Shipping Info CSV" />
           <Tab label="Shipping Labels" />
         </Tabs>
