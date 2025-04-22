@@ -19,10 +19,11 @@ export const useCSV = () => {
     setTcgplayerCSV(data)
   }
 
-  const convertCSV = (rows: ManaboxRowWithTCGplayerID[]): Pick<ExternalTcgPlayerRow, 'Product ID' | 'Quantity'>[] => {
+  const convertCSV = (rows: ManaboxRowWithTCGplayerID[]): Pick<ExternalTcgPlayerRow, 'Product ID' | 'Quantity' | 'Printing'>[] => {
     return rows.map(row => ({
       "Product ID": row.tcgplayer_id,
       "Quantity": row.Quantity,
+      "Printing": row.Foil === 'foil' ? 'Foil' : 'Normal',
     }))
   }
 

@@ -16,7 +16,7 @@ interface SideMenuProps {
 const mainListItems = [
   { text: 'CSV Transform', disabled: false },
   { text: 'Text Transform', disabled: false },
-  { text: 'Label Generator', disabled: true },
+  { text: 'Label Generator', disabled: false },
 ] as const
 
 const secondaryListItems = [

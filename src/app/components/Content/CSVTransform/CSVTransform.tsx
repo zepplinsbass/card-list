@@ -4,7 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
 import { useScryfall } from '@/app/hooks/useScryfall';
-import { useCSV } from '@/app/hooks/useCSV';
+import { useCSV } from '@/app/hooks/useTransformCSV';
 import { ManaboxTable } from "./ManaboxTable";
 import { TcgPlayerTable } from './TcgPlayerTable'
 import { ManaboxRow } from '@/app/types/Manabox';

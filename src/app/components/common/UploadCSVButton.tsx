@@ -2,7 +2,6 @@ import { useCallback } from 'react'
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Papa from 'papaparse'
-import { ManaboxRow } from '@/app/types/Manabox';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -18,7 +17,7 @@ const VisuallyHiddenInput = styled('input')({
 
 const allowedExtensions = ["csv"];
 
-export function UploadCSVButton({ onUpload }: { onUpload: (csv: ManaboxRow[]) => void }) {
+export function UploadCSVButton<T>({ onUpload }: { onUpload: (csv: T[]) => void }) {
   const handleUpload = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length) {
       const inputFile = event.target.files[0];
@@ -35,7 +34,7 @@ export function UploadCSVButton({ onUpload }: { onUpload: (csv: ManaboxRow[]) =>
           return
       }
 
-      Papa.parse<ManaboxRow>(inputFile, {
+      Papa.parse<T>(inputFile, {
         header: true,
         skipEmptyLines: true,
         complete: (result) => onUpload(result.data)

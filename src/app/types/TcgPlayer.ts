@@ -54,7 +54,7 @@ export interface ExternalTcgPlayerRow {
   Set: string;
   "Set Code": string;
   Name: string;
-  Printing: string;
+  Printing: "Foil" | "Normal";
   Condition: "Near Mint";
   Language: "English" | "Japanese";
 }
