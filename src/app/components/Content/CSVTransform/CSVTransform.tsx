@@ -8,6 +8,7 @@ import { useCSV } from '@/app/hooks/useCSV';
 import { ManaboxTable } from "./ManaboxTable";
 import { TcgPlayerTable } from './TcgPlayerTable'
 import { ManaboxRow } from '@/app/types/Manabox';
+import ProgressBar from '../../common/ProgressBar';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -27,7 +28,7 @@ export function CSVTransform() {
     }
   }
 
-  const { getTcgPlayerIdForCards } = useScryfall()
+  const { getTcgPlayerIdForCards, queryProgress } = useScryfall()
 
   const handleTransform = async () => {
     if (!manaboxCSV.length) {
@@ -36,6 +37,7 @@ export function CSVTransform() {
     const updatedRows = await getTcgPlayerIdForCards(manaboxCSV)
     const updatedCSV = convertCSV(updatedRows)
     saveTcgplayerCSV(updatedCSV)
+    setCurrentTab(1)
   }
 
   const onUpload = (csv: ManaboxRow[]) => saveManaboxCSV(csv)
@@ -48,6 +50,7 @@ export function CSVTransform() {
           <Tab label="TCGPlayer CSV" />
         </Tabs>
       </Box>
+      {queryProgress.loading && <ProgressBar loading={queryProgress.loading} progress={queryProgress.progress} total={queryProgress.total} />}
       { currentTab === 0 ? (
         <CustomTabPanel value={0} index={0}>
           <ManaboxTable data={manaboxCSV} handleTransform={handleTransform} onUpload={onUpload} />

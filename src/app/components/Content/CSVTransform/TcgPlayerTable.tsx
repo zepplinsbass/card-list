@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 
-import { ExternalTcgPlayerRow, TcgPlayerColumns } from '@/app/types/TcgPlayer';
+import { ExternalTcgPlayerRow, ExternalTcgPlayerColumns } from '@/app/types/TcgPlayer';
 
 type TableProps = {
   data: Partial<ExternalTcgPlayerRow>[]
@@ -14,7 +14,7 @@ export function TcgPlayerTable({ data }: TableProps) {
       ...row,
       id: index,
     })),
-    columns: TcgPlayerColumns.map(column => ({
+    columns: ExternalTcgPlayerColumns.map(column => ({
       field: column,
       headerName: column,
       hide: false,
